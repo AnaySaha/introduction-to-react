@@ -9,6 +9,7 @@ import {
 from "react-router-dom";
 import About from './components/Home/About/About';
 import Users from './components/Home/About/Users';
+import UserDetails from './components/Home/About/UserDetails/UserDetails';
 
 
 const router = createBrowserRouter([
@@ -36,7 +37,14 @@ const router = createBrowserRouter([
         path: '/users'
         loader: ()=> fetch('https://jsonplaceholder.typicode.com/users')
         element:
+      },
+
+      {
+        path: '/user/:userId'
+        loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userID}`)
+        element: <UserDetails></UserDetails>
       }
+
     ]
   }
 
